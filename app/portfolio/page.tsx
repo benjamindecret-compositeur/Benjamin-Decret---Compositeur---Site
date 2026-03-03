@@ -49,7 +49,7 @@ const categories = [
             },
             {
                 youtubeId: "0aRqQLaKgUk",
-                title: "Hobbit - Scene",
+                title: "Hobbit - scène",
                 description: "Ma proposition pour une scène du film \"La désolation de Smaug\"",
                 styleInfo: "orchestral, action"
             },
@@ -60,7 +60,7 @@ const categories = [
         videos: [
             {
                 youtubeId: "Zo0qV6-G_KY",
-                title: "Ratatouille, scène",
+                title: "Ratatouille - scène",
                 description: "Ma proposition pour une scène du film \"Ratatouille\"",
                 styleInfo: "Orchestral, nostalgique, animé"
             },
@@ -71,7 +71,7 @@ const categories = [
         videos: [
             {
                 youtubeId: "bnHy42OgkXA",
-                title: "Love, Simon - Scene",
+                title: "Love, Simon - scène",
                 description: "Ma proposition musicale pour une scène du film \"Love, Simon\"",
                 styleInfo: "moderne, minimaliste et émotif"
             },
@@ -99,7 +99,7 @@ const categories = [
         videos: [
             {
                 youtubeId: "Rh3MHu5MPp0",
-                title: "Loups Garous Générique",
+                title: "Loups Garous - générique",
                 description: "Ma proposition musicale pour le générique de la série \"Loups Garous\"",
                 styleInfo: "Orchestral, électronique, mystérieux"
             },
@@ -121,7 +121,7 @@ const categories = [
         videos: [
             {
                 youtubeId: "ko6iEFALhlY",
-                title: "Blade Runner 2049, Chanson",
+                title: "Blade Runner 2049 - chanson",
                 description: "Ma proposition de chanson composée pour une scène du film \"Blade Runner 2049\"",
                 styleInfo: "Synthwave, Retro, électronique"
             },
@@ -234,3 +234,4 @@ export default function PortfolioPage() {
         </div>
     );
 }
+
