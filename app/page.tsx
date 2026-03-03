@@ -329,7 +329,7 @@ function PortfolioSection() {
     },
     {
       id: "Rh3MHu5MPp0",
-      title: "Loups Garous Générique",
+      title: "Loups Garous - générique",
       desc: "Ma proposition musicale pour le générique de la série \"Loups Garous\"",
       style: "Orchestral, électronique, mystérieux"
     },
@@ -341,13 +341,13 @@ function PortfolioSection() {
     },
     {
       id: "ko6iEFALhlY",
-      title: "Blade Runner 2049, Chanson",
+      title: "Blade Runner 2049 - chanson",
       desc: "Ma proposition de chanson composée pour une scène du film \"Blade Runner 2049\"",
       style: "Synthwave, Retro, électronique"
     },
     {
       id: "Zo0qV6-G_KY",
-      title: "Ratatouille, scène",
+      title: "Ratatouille - scène",
       desc: "Ma proposition pour une scène du film \"Ratatouille\"",
       style: "Orchestral, nostalgique, animé"
     },
