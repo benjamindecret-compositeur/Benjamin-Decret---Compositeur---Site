@@ -316,7 +316,7 @@ function PortfolioSection() {
   // Replace with actual YouTube IDs
   const musicALImage = [
     {
-      id: "TdaB6ceDu7Q",
+      id: "4egQ90mkR0c",
       title: "DUNE",
       desc: "Ma proposition musicale pour le film \"Dune\", dans le style de John Williams",
       style: "musique orchestrale uniquement"
