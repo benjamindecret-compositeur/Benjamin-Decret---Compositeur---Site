@@ -120,7 +120,7 @@ const categories = [
         name: "Chanson pour l'image",
         videos: [
             {
-                youtubeId: "ko6iEFALhlY",
+                youtubeId: "QE8xOfJa0BI",
                 title: "Blade Runner 2049 - chanson",
                 description: "Ma proposition de chanson composée pour une scène du film \"Blade Runner 2049\"",
                 styleInfo: "Synthwave, Retro, électronique"
@@ -234,5 +234,6 @@ export default function PortfolioPage() {
         </div>
     );
 }
+
 
 
