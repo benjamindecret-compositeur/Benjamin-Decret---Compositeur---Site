@@ -340,7 +340,7 @@ function PortfolioSection() {
       style: "Musique du monde, électronique et acoustique, influences Brésiliennes et d'Afrique de l'Ouest"
     },
     {
-      id: "ko6iEFALhlY",
+      id: "QE8xOfJa0BI",
       title: "Blade Runner 2049 - chanson",
       desc: "Ma proposition de chanson composée pour une scène du film \"Blade Runner 2049\"",
       style: "Synthwave, Retro, électronique"
