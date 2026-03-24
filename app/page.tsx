@@ -317,7 +317,7 @@ function PortfolioSection() {
   // Replace with actual YouTube IDs
   const musicALImage = [
     {
-      id: "8p5P6jLJh4o",
+      id: "NBPVIljJBqg",
       title: "DUNE",
       desc: "Ma proposition musicale pour le film \"Dune\", dans le style de John Williams",
       style: "musique orchestrale uniquement"
@@ -373,6 +373,13 @@ function PortfolioSection() {
     { id: "2bEps8R0rTjuOkDQIPiGL2", title: "Alma Real - La mare aux songes" },
   ];
 
+  const soundcloudEmbeds = [
+    { url: "https://soundcloud.com/benjamin-decret/jdr-chroniques-du-desert_salle", title: "JDR - Chroniques du Desert" },
+    { url: "https://soundcloud.com/benjamin-decret/destinee-dark-blue-dungeon", title: "Destinée - Dark Blue Dungeon" },
+    { url: "https://soundcloud.com/benjamin-decret/rhapsodie-pour-violoncelle", title: "Rhapsodie pour Violoncelle" },
+    { url: "https://soundcloud.com/benjamin-decret/emission-tele", title: "Emission Télé" }
+  ];
+
   return (
     <section id="portfolio" className="py-24" style={{ background: "var(--violet)" }}>
       <div className="safe-container">
@@ -424,13 +431,13 @@ function PortfolioSection() {
           </div>
         </div>
 
-        {/* Spotify — Projets musicaux - Wrapped in beige as requested */}
+        {/* Spotify — Discographie - Wrapped in beige as requested */}
         <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
           <h3
             className="text-2xl font-normal mb-8"
             style={{ color: "var(--deep-purple)" }}
           >
-            Projets Musicaux
+            Discographie
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {spotifyEmbeds.map((sp, i) => (
@@ -444,6 +451,43 @@ function PortfolioSection() {
                   title={sp.title}
                   style={{ border: "none" }}
                 />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Soundcloud — Musiques Narratives */}
+        <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
+          <div className="flex items-center justify-between gap-4 mb-8">
+            <h3
+              className="text-2xl font-normal"
+              style={{ color: "var(--deep-purple)" }}
+            >
+              Musiques Narratives
+            </h3>
+            <a
+              href="https://soundcloud.com/benjamin-decret"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold hover:opacity-70 transition-opacity shrink-0"
+              style={{ color: "var(--deep-purple)" }}
+            >
+              Lien Soundcloud →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {soundcloudEmbeds.map((sc, i) => (
+              <div key={i} className="soundcloud-wrapper rounded-xl overflow-hidden shadow-sm bg-white">
+                <iframe
+                  width="100%"
+                  height="152"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay"
+                  src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(sc.url)}&color=%233d2b6b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false`}
+                  title={sc.title}
+                  style={{ border: "none" }}
+                ></iframe>
               </div>
             ))}
           </div>
