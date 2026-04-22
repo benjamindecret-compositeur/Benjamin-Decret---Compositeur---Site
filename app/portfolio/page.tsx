@@ -43,19 +43,19 @@ const categories = [
         videos: [
             {
                 youtubeId: "EXrNm_RSwJA",
-                title: "the Hobbit - scène d'Erebor",
+                title: "The Hobbit - scène d'Erebor",
                 description: "Ma composition pour cette scène du \"Hobbit, un voyage inattendu\"",
                 styleInfo: "orchestral, épique, médiéval/fantasy"
             },
             {
                 youtubeId: "NBPVIljJBqg",
-                title: "DUNE",
+                title: "DUNE - trailer",
                 description: "Ma proposition musicale pour le film \"Dune\", dans le style de John Williams",
                 styleInfo: "musique orchestrale uniquement"
             },
             {
                 youtubeId: "0aRqQLaKgUk",
-                title: "Hobbit - scène",
+                title: "The Hobbit - scène de combat",
                 description: "Ma proposition pour une scène du film \"La désolation de Smaug\"",
                 styleInfo: "orchestral, action"
             },
@@ -72,7 +72,7 @@ const categories = [
             },
             {
                 youtubeId: "kvVGmnB_IDE",
-                title: "First Man - scène atterissage sur la lune",
+                title: "First Man - scène d'atterissage sur la lune",
                 description: "Ma proposition musicale pour une scène du film \"First Man\" dans le style Jóhann Jóhannsson",
                 styleInfo: "textural, sound design, onirique, DeepSpace"
             },
