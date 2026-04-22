@@ -342,7 +342,7 @@ function PortfolioSection() {
     },
     {
       id: "kvVGmnB_IDE",
-      title: "First Man - scène atterissage sur la lune",
+      title: "First Man - scène d'atterrissage sur la lune",
       desc: "Ma proposition musicale pour une scène du film \"First Man\" dans le style Jóhann Jóhannsson",
       style: "textural, sound design, onirique, DeepSpace"
     },
@@ -547,13 +547,13 @@ function ContactSection() {
           </div>
         </div>
 
-        {/* Photo gallery — 4 slots */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          {[1, 2, 3, 4].map((n) => (
-            <div key={n} className="relative aspect-square rounded-xl overflow-hidden">
+        {/* Photo gallery — 5 slots */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          {["BD1.png", "BD5.jpg", "BD3.png", "BD6.jpg", "BD7.jpg"].map((img, idx) => (
+            <div key={idx} className="relative w-[calc(50%-0.5rem)] md:w-[calc(20%-0.8rem)] aspect-square rounded-xl overflow-hidden">
               <Image
-                src={`/BD${n}.png`}
-                alt={`Photo personnelle ${n}`}
+                src={`/${img}`}
+                alt={`Photo personnelle ${idx + 1}`}
                 fill
                 className="object-cover"
               />

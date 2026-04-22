@@ -72,7 +72,7 @@ const categories = [
             },
             {
                 youtubeId: "kvVGmnB_IDE",
-                title: "First Man - scène d'atterissage sur la lune",
+                title: "First Man - scène d'atterrissage sur la lune",
                 description: "Ma proposition musicale pour une scène du film \"First Man\" dans le style Jóhann Jóhannsson",
                 styleInfo: "textural, sound design, onirique, DeepSpace"
             },
