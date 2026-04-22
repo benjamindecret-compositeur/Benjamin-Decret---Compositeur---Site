@@ -317,6 +317,12 @@ function PortfolioSection() {
   // Replace with actual YouTube IDs
   const musicALImage = [
     {
+      id: "EXrNm_RSwJA",
+      title: "the Hobbit - scène d'Erebor",
+      desc: "Ma composition pour cette scène du \"Hobbit, un voyage inattendu\"",
+      style: "orchestral, épique, médiéval/fantasy"
+    },
+    {
       id: "NBPVIljJBqg",
       title: "DUNE",
       desc: "Ma proposition musicale pour le film \"Dune\", dans le style de John Williams",
@@ -339,12 +345,6 @@ function PortfolioSection() {
       title: "First Man - scène atterissage sur la lune",
       desc: "Ma proposition musicale pour une scène du film \"First Man\" dans le style Jóhann Jóhannsson",
       style: "textural, sound design, onirique, DeepSpace"
-    },
-    {
-      id: "inQW64to0k4",
-      title: "WALL-E - chanson",
-      desc: "Ma proposition de chanson composée pour une scène du film d'animation \"WALL-E\"",
-      style: "musique moderne, jazz-trap, chanson"
     },
     {
       id: "20P3-MGum8w",

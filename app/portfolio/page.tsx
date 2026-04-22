@@ -39,8 +39,14 @@ function VideoCard({ youtubeId, title, description, styleInfo, category }: Video
 
 const categories = [
     {
-        name: "Action",
+        name: "Fantasy / Action",
         videos: [
+            {
+                youtubeId: "EXrNm_RSwJA",
+                title: "the Hobbit - scène d'Erebor",
+                description: "Ma composition pour cette scène du \"Hobbit, un voyage inattendu\"",
+                styleInfo: "orchestral, épique, médiéval/fantasy"
+            },
             {
                 youtubeId: "NBPVIljJBqg",
                 title: "DUNE",
@@ -52,17 +58,6 @@ const categories = [
                 title: "Hobbit - scène",
                 description: "Ma proposition pour une scène du film \"La désolation de Smaug\"",
                 styleInfo: "orchestral, action"
-            },
-        ],
-    },
-    {
-        name: "Animation",
-        videos: [
-            {
-                youtubeId: "Zo0qV6-G_KY",
-                title: "Ratatouille - scène",
-                description: "Ma proposition pour une scène du film \"Ratatouille\"",
-                styleInfo: "Orchestral, nostalgique, animé"
             },
         ],
     },
@@ -125,6 +120,17 @@ const categories = [
                 title: "Portela",
                 description: "Ma proposition musicale pour un trailer présentant des costumes pour le carnaval de Rio",
                 styleInfo: "Musique du monde, électronique et acoustique, influences Brésiliennes et d'Afrique de l'Ouest"
+            },
+        ],
+    },
+    {
+        name: "Animation",
+        videos: [
+            {
+                youtubeId: "Zo0qV6-G_KY",
+                title: "Ratatouille - scène",
+                description: "Ma proposition pour une scène du film \"Ratatouille\"",
+                styleInfo: "Orchestral, nostalgique, animé"
             },
         ],
     },
@@ -212,8 +218,10 @@ export default function PortfolioPage() {
                         </p>
                     </div>
 
-                    {categories.map((cat, idx) => (
-                        <section key={cat.name} className="mb-24">
+                    {categories.map((cat, idx) => {
+                        const sectionId = cat.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                        return (
+                        <section key={cat.name} id={sectionId} className="mb-24 scroll-mt-32">
                             <div className="flex items-center gap-6 mb-12">
                                 <h2 className="text-3xl md:text-4xl font-normal" style={{ color: "var(--deep-purple)" }}>
                                     {cat.name}
@@ -232,7 +240,8 @@ export default function PortfolioPage() {
                                 ))}
                             </div>
                         </section>
-                    ))}
+                        );
+                    })}
 
                     {/* Spotify — Discographie - Wrapped in beige as requested */}
                     <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
