@@ -318,13 +318,13 @@ function PortfolioSection() {
   const musicALImage = [
     {
       id: "EXrNm_RSwJA",
-      title: "the Hobbit - scène d'Erebor",
+      title: "The Hobbit - scène d'Erebor",
       desc: "Ma composition pour cette scène du \"Hobbit, un voyage inattendu\"",
       style: "orchestral, épique, médiéval/fantasy"
     },
     {
       id: "NBPVIljJBqg",
-      title: "DUNE",
+      title: "DUNE - trailer",
       desc: "Ma proposition musicale pour le film \"Dune\", dans le style de John Williams",
       style: "musique orchestrale uniquement"
     },
