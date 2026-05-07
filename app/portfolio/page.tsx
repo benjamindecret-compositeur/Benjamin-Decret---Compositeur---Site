@@ -127,6 +127,12 @@ const categories = [
         name: "Animation",
         videos: [
             {
+                youtubeId: "1nLSEUY2Jxg",
+                title: "Légende du crabe phare - court métrage",
+                description: "Ma proposition de rescore pour ce court métrage",
+                styleInfo: "orchestral, hybride, léger, nostalgique"
+            },
+            {
                 youtubeId: "Zo0qV6-G_KY",
                 title: "Ratatouille - scène",
                 description: "Ma proposition pour une scène du film \"Ratatouille\"",
@@ -161,6 +167,8 @@ const spotifyEmbeds = [
 ];
 
 const soundcloudEmbeds = [
+    { url: "https://soundcloud.com/benjamin-decret/tv-show-funk-concept", title: "TV Show Funk Concept" },
+    { url: "https://soundcloud.com/benjamin-decret/video-game-fantasy-vintage", title: "Video Game Fantasy Vintage" },
     { url: "https://soundcloud.com/benjamin-decret/jdr-chroniques-du-desert_salle", title: "JDR - Chroniques du Desert" },
     { url: "https://soundcloud.com/benjamin-decret/destinee-dark-blue-dungeon", title: "Destinée - Dark Blue Dungeon" },
     { url: "https://soundcloud.com/benjamin-decret/rhapsodie-pour-violoncelle", title: "Rhapsodie pour Violoncelle" },
@@ -243,31 +251,6 @@ export default function PortfolioPage() {
                         );
                     })}
 
-                    {/* Spotify — Discographie - Wrapped in beige as requested */}
-                    <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
-                        <h3
-                            className="text-2xl font-normal mb-8"
-                            style={{ color: "var(--deep-purple)" }}
-                        >
-                            Discographie
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            {spotifyEmbeds.map((sp, i) => (
-                                <div key={i} className="spotify-wrapper rounded-xl overflow-hidden shadow-sm">
-                                    <iframe
-                                        src={`https://open.spotify.com/embed/track/${sp.id}?utm_source=generator&theme=0`}
-                                        width="100%"
-                                        height="152"
-                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                                        loading="lazy"
-                                        title={sp.title}
-                                        style={{ border: "none" }}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
                     {/* Soundcloud — Musiques Narratives */}
                     <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
                         <div className="flex items-center justify-between gap-4 mb-8">
@@ -300,6 +283,31 @@ export default function PortfolioPage() {
                                         title={sc.title}
                                         style={{ border: "none" }}
                                     ></iframe>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Spotify — Discographie */}
+                    <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
+                        <h3
+                            className="text-2xl font-normal mb-8"
+                            style={{ color: "var(--deep-purple)" }}
+                        >
+                            Discographie
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {spotifyEmbeds.map((sp, i) => (
+                                <div key={i} className="spotify-wrapper rounded-xl overflow-hidden shadow-sm">
+                                    <iframe
+                                        src={`https://open.spotify.com/embed/track/${sp.id}?utm_source=generator&theme=0`}
+                                        width="100%"
+                                        height="152"
+                                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                        loading="lazy"
+                                        title={sp.title}
+                                        style={{ border: "none" }}
+                                    />
                                 </div>
                             ))}
                         </div>

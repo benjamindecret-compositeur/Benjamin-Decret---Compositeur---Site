@@ -335,10 +335,10 @@ function PortfolioSection() {
       style: "musique orchestrale, japonaise, percussions"
     },
     {
-      id: "Rh3MHu5MPp0",
-      title: "Loup Garou - générique",
-      desc: "Ma proposition musicale pour le générique de la série \"Loups Garous\"",
-      style: "Orchestral, électronique, mystérieux"
+      id: "1nLSEUY2Jxg",
+      title: "Légende du crabe phare - court métrage",
+      desc: "Ma proposition de rescore pour ce court métrage",
+      style: "orchestral, hybride, léger, nostalgique"
     },
     {
       id: "kvVGmnB_IDE",
@@ -359,10 +359,10 @@ function PortfolioSection() {
       style: "Musique du monde, électronique et acoustique, influences Brésiliennes et d'Afrique de l'Ouest"
     },
     {
-      id: "Zo0qV6-G_KY",
-      title: "Ratatouille - scène",
-      desc: "Ma proposition pour une scène du film \"Ratatouille\"",
-      style: "Orchestral, nostalgique, animé"
+      id: "Rh3MHu5MPp0",
+      title: "Loup Garou - générique",
+      desc: "Ma proposition musicale pour le générique de la série \"Loups Garous\"",
+      style: "Orchestral, électronique, mystérieux"
     },
   ];
 
@@ -374,6 +374,8 @@ function PortfolioSection() {
   ];
 
   const soundcloudEmbeds = [
+    { url: "https://soundcloud.com/benjamin-decret/tv-show-funk-concept", title: "TV Show Funk Concept" },
+    { url: "https://soundcloud.com/benjamin-decret/video-game-fantasy-vintage", title: "Video Game Fantasy Vintage" },
     { url: "https://soundcloud.com/benjamin-decret/jdr-chroniques-du-desert_salle", title: "JDR - Chroniques du Desert" },
     { url: "https://soundcloud.com/benjamin-decret/destinee-dark-blue-dungeon", title: "Destinée - Dark Blue Dungeon" },
     { url: "https://soundcloud.com/benjamin-decret/rhapsodie-pour-violoncelle", title: "Rhapsodie pour Violoncelle" },
@@ -401,8 +403,7 @@ function PortfolioSection() {
           </div>
           <Link
             href="/portfolio"
-            className="self-end text-sm font-bold hover:opacity-70 transition-opacity shrink-0 mb-8"
-            style={{ color: "var(--deep-purple)" }}
+            className="self-end btn-primary shrink-0 mb-8"
           >
             Portfolio complet →
           </Link>
@@ -428,31 +429,6 @@ function PortfolioSection() {
           </div>
           <div className="relative w-[200px] h-[200px]" style={{ top: "20px" }}>
             <Image src="/ImageBD12.png" alt="" fill className="object-contain" />
-          </div>
-        </div>
-
-        {/* Spotify — Discographie - Wrapped in beige as requested */}
-        <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
-          <h3
-            className="text-2xl font-normal mb-8"
-            style={{ color: "var(--deep-purple)" }}
-          >
-            Discographie
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {spotifyEmbeds.map((sp, i) => (
-              <div key={i} className="spotify-wrapper rounded-xl overflow-hidden shadow-sm">
-                <iframe
-                  src={`https://open.spotify.com/embed/track/${sp.id}?utm_source=generator&theme=0`}
-                  width="100%"
-                  height="152"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title={sp.title}
-                  style={{ border: "none" }}
-                />
-              </div>
-            ))}
           </div>
         </div>
 
@@ -493,13 +469,35 @@ function PortfolioSection() {
           </div>
         </div>
 
+        {/* Spotify — Discographie */}
+        <div className="mb-16 p-8 md:p-12 rounded-3xl" style={{ background: "var(--beige)" }}>
+          <h3
+            className="text-2xl font-normal mb-8"
+            style={{ color: "var(--deep-purple)" }}
+          >
+            Discographie
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {spotifyEmbeds.map((sp, i) => (
+              <div key={i} className="spotify-wrapper rounded-xl overflow-hidden shadow-sm">
+                <iframe
+                  src={`https://open.spotify.com/embed/track/${sp.id}?utm_source=generator&theme=0`}
+                  width="100%"
+                  height="152"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  title={sp.title}
+                  style={{ border: "none" }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* CTA — Portfolio complet */}
         <div className="flex justify-center">
-          <Link href="/portfolio" className="btn-primary text-base py-3 px-8">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            Voir le portfolio complet
+          <Link href="/portfolio" className="btn-primary">
+            Voir le portfolio complet →
           </Link>
         </div>
       </div>
