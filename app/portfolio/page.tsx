@@ -1,26 +1,82 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 interface VideoCardProps {
-    youtubeId: string;
+    youtubeId?: string;
+    dailymotionId?: string;
     title: string;
     description: string;
     styleInfo?: string;
     category?: string;
 }
 
-function VideoCard({ youtubeId, title, description, styleInfo, category }: VideoCardProps) {
+function VideoCard({ youtubeId, dailymotionId, title, description, styleInfo, category }: VideoCardProps) {
+    const [dmPlaying, setDmPlaying] = useState(false);
+
     return (
         <div className="flex flex-col gap-4 group">
             <div className="video-wrapper rounded-2xl overflow-hidden shadow-md transition-shadow duration-300 group-hover:shadow-xl">
-                <iframe
-                    src={`https://www.youtube.com/embed/${youtubeId}`}
-                    title={title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full border-none"
-                />
+                {youtubeId ? (
+                    <iframe
+                        src={`https://www.youtube.com/embed/${youtubeId}`}
+                        title={title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full border-none"
+                    />
+                ) : dailymotionId ? (
+                    dmPlaying ? (
+                        <iframe
+                            src={`https://www.dailymotion.com/embed/video/${dailymotionId}?autoplay=1`}
+                            title={title}
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowFullScreen
+                            className="w-full h-full border-none"
+                            style={{ width: "100%", height: "100%" }}
+                        />
+                    ) : (
+                        <button
+                            onClick={() => setDmPlaying(true)}
+                            style={{
+                                position: "absolute",
+                                inset: 0,
+                                width: "100%",
+                                height: "100%",
+                                border: "none",
+                                cursor: "pointer",
+                                background: "#000",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                            aria-label={`Lire ${title}`}
+                        >
+                            <img
+                                src={`https://www.dailymotion.com/thumbnail/video/${dailymotionId}`}
+                                alt={title}
+                                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                            />
+                            <div style={{
+                                position: "relative",
+                                zIndex: 2,
+                                width: 68,
+                                height: 48,
+                                background: "rgba(0,0,0,0.75)",
+                                borderRadius: 12,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                transition: "background 0.2s",
+                            }}>
+                                <svg width="24" height="28" viewBox="0 0 24 28" fill="white">
+                                    <polygon points="4,2 22,14 4,26" />
+                                </svg>
+                            </div>
+                        </button>
+                    )
+                ) : null}
             </div>
             <div className="px-1">
                 <h4 className="text-xl font-bold mb-1" style={{ color: "var(--deep-purple)" }}>{title}</h4>
@@ -127,7 +183,7 @@ const categories = [
         name: "Animation",
         videos: [
             {
-                youtubeId: "1nLSEUY2Jxg",
+                dailymotionId: "k6gyPu1YFnJPCtG0DpQ",
                 title: "Légende du crabe phare - court métrage",
                 description: "Ma proposition de rescore pour ce court métrage",
                 styleInfo: "orchestral, hybride, léger, nostalgique"
@@ -167,6 +223,8 @@ const spotifyEmbeds = [
 ];
 
 const soundcloudEmbeds = [
+    { url: "https://soundcloud.com/benjamin-decret/ambiant-tides-concept-ambiant", title: "Ambiant Tides Concept Ambiant" },
+    { url: "https://soundcloud.com/benjamin-decret/ambient-video-game-dark-jazz", title: "Ambient Video Game Dark Jazz" },
     { url: "https://soundcloud.com/benjamin-decret/tv-show-funk-concept", title: "TV Show Funk Concept" },
     { url: "https://soundcloud.com/benjamin-decret/video-game-fantasy-vintage", title: "Video Game Fantasy Vintage" },
     { url: "https://soundcloud.com/benjamin-decret/jdr-chroniques-du-desert_salle", title: "JDR - Chroniques du Desert" },
@@ -241,6 +299,7 @@ export default function PortfolioPage() {
                                     <VideoCard
                                         key={i}
                                         youtubeId={v.youtubeId}
+                                        dailymotionId={v.dailymotionId}
                                         title={v.title}
                                         description={v.description}
                                         styleInfo={v.styleInfo}
@@ -275,11 +334,11 @@ export default function PortfolioPage() {
                                 <div key={i} className="soundcloud-wrapper rounded-xl overflow-hidden shadow-sm bg-white">
                                     <iframe
                                         width="100%"
-                                        height="152"
+                                        height="166"
                                         scrolling="no"
                                         frameBorder="no"
                                         allow="autoplay"
-                                        src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(sc.url)}&color=%233d2b6b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false`}
+                                        src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(sc.url)}&color=%233d2b6b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false`}
                                         title={sc.title}
                                         style={{ border: "none" }}
                                     ></iframe>
