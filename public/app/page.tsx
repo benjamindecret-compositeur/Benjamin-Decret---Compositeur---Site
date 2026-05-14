@@ -279,22 +279,77 @@ function ServicesSection() {
 
 // ─── PORTFOLIO ────────────────────────────────────────────────────────────────
 interface VideoCardProps {
-  youtubeId: string;
+  youtubeId?: string;
+  dailymotionId?: string;
   title: string;
   description: string;
   styleInfo?: string;
 }
 
-function VideoCard({ youtubeId, title, description, styleInfo }: VideoCardProps) {
+function VideoCard({ youtubeId, dailymotionId, title, description, styleInfo }: VideoCardProps) {
+  const [dmPlaying, setDmPlaying] = useState(false);
+
   return (
     <div className="flex flex-col gap-4">
       <div className="video-wrapper">
-        <iframe
-          src={`https://www.youtube.com/embed/${youtubeId}`}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        {youtubeId ? (
+          <iframe
+            src={`https://www.youtube.com/embed/${youtubeId}`}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : dailymotionId ? (
+          dmPlaying ? (
+            <iframe
+              src={`https://www.dailymotion.com/embed/video/${dailymotionId}?autoplay=1`}
+              title={title}
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              style={{ width: "100%", height: "100%" }}
+            />
+          ) : (
+            <button
+              onClick={() => setDmPlaying(true)}
+              style={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+                border: "none",
+                cursor: "pointer",
+                background: "#000",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              aria-label={`Lire ${title}`}
+            >
+              <img
+                src={`https://www.dailymotion.com/thumbnail/video/${dailymotionId}`}
+                alt={title}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              />
+              {/* Play button overlay */}
+              <div style={{
+                position: "relative",
+                zIndex: 2,
+                width: 68,
+                height: 48,
+                background: "rgba(0,0,0,0.75)",
+                borderRadius: 12,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background 0.2s",
+              }}>
+                <svg width="24" height="28" viewBox="0 0 24 28" fill="white">
+                  <polygon points="4,2 22,14 4,26" />
+                </svg>
+              </div>
+            </button>
+          )
+        ) : null}
       </div>
       <div>
         <h4 className="font-extrabold text-lg md:text-xl mb-2" style={{ color: "var(--deep-purple)", fontFamily: "var(--font-tight), sans-serif" }}>
@@ -335,7 +390,7 @@ function PortfolioSection() {
       style: "musique orchestrale, japonaise, percussions"
     },
     {
-      id: "1nLSEUY2Jxg",
+      dailymotionId: "k6gyPu1YFnJPCtG0DpQ",
       title: "Légende du crabe phare - court métrage",
       desc: "Ma proposition de rescore pour ce court métrage",
       style: "orchestral, hybride, léger, nostalgique"
@@ -374,7 +429,7 @@ function PortfolioSection() {
   ];
 
   const soundcloudEmbeds = [
-    { url: "https://soundcloud.com/benjamin-decret/tv-show-funk-concept", title: "TV Show Funk Concept" },
+    { url: "https://soundcloud.com/benjamin-decret/ambiant-tides-concept-ambiant", title: "Ambiant Tides Concept Ambiant" },
     { url: "https://soundcloud.com/benjamin-decret/video-game-fantasy-vintage", title: "Video Game Fantasy Vintage" },
     { url: "https://soundcloud.com/benjamin-decret/jdr-chroniques-du-desert_salle", title: "JDR - Chroniques du Desert" },
     { url: "https://soundcloud.com/benjamin-decret/destinee-dark-blue-dungeon", title: "Destinée - Dark Blue Dungeon" },
@@ -415,6 +470,7 @@ function PortfolioSection() {
             <VideoCard
               key={i}
               youtubeId={v.id}
+              dailymotionId={v.dailymotionId}
               title={v.title}
               description={v.desc}
               styleInfo={v.style}
@@ -456,11 +512,11 @@ function PortfolioSection() {
               <div key={i} className="soundcloud-wrapper rounded-xl overflow-hidden shadow-sm bg-white">
                 <iframe
                   width="100%"
-                  height="152"
+                  height="166"
                   scrolling="no"
                   frameBorder="no"
                   allow="autoplay"
-                  src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(sc.url)}&color=%233d2b6b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false`}
+                  src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(sc.url)}&color=%233d2b6b&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=false`}
                   title={sc.title}
                   style={{ border: "none" }}
                 ></iframe>
