@@ -25,15 +25,20 @@ function Navbar() {
         }`}
     >
       <div className="safe-container flex items-center justify-between" style={{ padding: '9px 0' }}>
-        {/* Logo */}
-        <a href="#intro" className="flex items-center gap-2 group min-w-0">
-          <span
-            className="text-lg font-medium tracking-tighter truncate"
-            style={{ color: "black", fontFamily: "var(--font-tight), sans-serif" }}
-          >
-            {t("nav.title")}
-          </span>
-        </a>
+        {/* Logo & Mobile Language Switcher */}
+        <div className="flex items-center gap-3 min-w-0 shrink">
+          <a href="#intro" className="flex items-center gap-2 group min-w-0">
+            <span
+              className="text-base sm:text-lg font-medium tracking-tighter truncate"
+              style={{ color: "black", fontFamily: "var(--font-tight), sans-serif" }}
+            >
+              {t("nav.title")}
+            </span>
+          </a>
+          <div className="md:hidden shrink-0">
+            <LanguageSwitcher />
+          </div>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
@@ -61,8 +66,7 @@ function Navbar() {
         </nav>
 
         {/* Mobile Nav Actions */}
-        <div className="flex md:hidden items-center gap-1 shrink-0">
-          <LanguageSwitcher />
+        <div className="flex md:hidden items-center shrink-0">
           <button
             className="p-2 ml-1 rounded-lg"
             style={{ color: "var(--deep-purple)" }}
