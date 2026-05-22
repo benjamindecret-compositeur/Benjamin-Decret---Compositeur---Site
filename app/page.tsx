@@ -61,10 +61,10 @@ function Navbar() {
         </nav>
 
         {/* Mobile Nav Actions */}
-        <div className="flex md:hidden items-center gap-3 shrink-0">
+        <div className="flex md:hidden items-center gap-1 shrink-0">
           <LanguageSwitcher />
           <button
-            className="p-2 rounded-lg"
+            className="p-2 ml-1 rounded-lg"
             style={{ color: "var(--deep-purple)" }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Menu"
@@ -654,7 +654,7 @@ function Footer() {
           {[
             { label: t("portfolio.title"), href: "#portfolio" },
             { label: t("nav.services"), href: "#services" },
-            { label: t("biographie.tag"), href: "#biographie" },
+            { label: "Bio", href: "#biographie" },
           ].map((link) => (
             <a
               key={link.href}
