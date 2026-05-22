@@ -246,12 +246,12 @@ export default function PortfolioPage() {
                 <div className="safe-container flex items-center justify-between" style={{ padding: '9px 0' }}>
                     <Link
                         href="/"
-                        className="text-lg font-medium tracking-tighter"
+                        className="text-lg font-medium tracking-tighter truncate min-w-0 block"
                         style={{ color: "black", fontFamily: "var(--font-tight), sans-serif" }}
                     >
                         {t("nav.backToHome")}
                     </Link>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 shrink-0">
                         <LanguageSwitcher />
                         <a href="mailto:benjamin.decret@gmail.com" className="btn-primary text-sm" style={{ height: 'max-content', padding: '10px 24px', margin: 'auto 0' }}>
                             {t("nav.contact")}

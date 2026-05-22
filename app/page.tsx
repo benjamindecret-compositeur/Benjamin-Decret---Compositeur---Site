@@ -26,9 +26,9 @@ function Navbar() {
     >
       <div className="safe-container flex items-center justify-between" style={{ padding: '9px 0' }}>
         {/* Logo */}
-        <a href="#intro" className="flex items-center gap-2 group">
+        <a href="#intro" className="flex items-center gap-2 group min-w-0">
           <span
-            className="text-lg font-medium tracking-tighter"
+            className="text-lg font-medium tracking-tighter truncate"
             style={{ color: "black", fontFamily: "var(--font-tight), sans-serif" }}
           >
             {t("nav.title")}
@@ -61,7 +61,7 @@ function Navbar() {
         </nav>
 
         {/* Mobile Nav Actions */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-3 shrink-0">
           <LanguageSwitcher />
           <button
             className="p-2 rounded-lg"
@@ -85,7 +85,7 @@ function Navbar() {
         <div className="md:hidden bg-[#F5E6D3]/98 backdrop-blur-md border-t border-purple-100 px-6 py-4 flex flex-col gap-4">
           <a href="#portfolio" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>{t("nav.portfolio")}</a>
           <a href="#services" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>{t("nav.services")}</a>
-          <a href="#biographie" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>{t("biographie.tag")}</a>
+          <a href="#biographie" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>Bio</a>
           <a href="mailto:benjamin.decret@gmail.com" className="btn-primary w-fit">{t("nav.contact")}</a>
         </div>
       )}
