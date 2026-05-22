@@ -243,7 +243,7 @@ export default function PortfolioPage() {
         <div className="min-h-screen relative overflow-x-hidden" style={{ background: "var(--violet)" }}>
             {/* Inline Navbar */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#E0DBFF]/90 backdrop-blur-md border-b" style={{ borderColor: "rgba(61,43,107,0.1)" }}>
-                <div className="safe-container flex items-center justify-between" style={{ padding: '9px 0' }}>
+                <div className="safe-container flex items-center justify-between py-[9px]">
                     {/* Back Link & Mobile Language Switcher */}
                     <div className="flex items-center gap-3 min-w-0 shrink">
                         <Link

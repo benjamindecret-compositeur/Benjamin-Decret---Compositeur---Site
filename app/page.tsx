@@ -24,7 +24,7 @@ function Navbar() {
         : "bg-transparent"
         }`}
     >
-      <div className="safe-container flex items-center justify-between" style={{ padding: '9px 0' }}>
+      <div className="safe-container flex items-center justify-between py-[9px]">
         {/* Logo & Mobile Language Switcher */}
         <div className="flex items-center gap-3 min-w-0 shrink">
           <a href="#intro" className="flex items-center gap-2 group min-w-0">
