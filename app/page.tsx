@@ -2,11 +2,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useLanguage } from "./context/LanguageContext";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 // ─── NAVBAR ────────────────────────────────────────────────────────────────────
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -28,15 +31,15 @@ function Navbar() {
             className="text-lg font-medium tracking-tighter"
             style={{ color: "black", fontFamily: "var(--font-tight), sans-serif" }}
           >
-            Benjamin Decret - Compositeur
+            {t("nav.title")}
           </span>
         </a>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {[
-            { label: "Mon Portfolio", href: "#portfolio" },
-            { label: "Services", href: "#services" },
+            { label: t("nav.portfolio"), href: "#portfolio" },
+            { label: t("nav.services"), href: "#services" },
           ].map((link) => (
             <a
               key={link.href}
@@ -47,39 +50,43 @@ function Navbar() {
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher />
           <a
             href="mailto:benjamin.decret@gmail.com"
             className="btn-primary"
             style={{ height: 'max-content', padding: '10px 24px', margin: 'auto 0' }}
           >
-            CONTACT
+            {t("nav.contact")}
           </a>
         </nav>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden p-2 rounded-lg"
-          style={{ color: "var(--deep-purple)" }}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        {/* Mobile Nav Actions */}
+        <div className="flex md:hidden items-center gap-3">
+          <LanguageSwitcher />
+          <button
+            className="p-2 rounded-lg"
+            style={{ color: "var(--deep-purple)" }}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-[#F5E6D3]/98 backdrop-blur-md border-t border-purple-100 px-6 py-4 flex flex-col gap-4">
-          <a href="#portfolio" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>Portfolio</a>
-          <a href="#services" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>Services</a>
-          <a href="#biographie" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>À propos</a>
-          <a href="mailto:benjamin.decret@gmail.com" className="btn-primary w-fit">Contact</a>
+          <a href="#portfolio" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>{t("nav.portfolio")}</a>
+          <a href="#services" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>{t("nav.services")}</a>
+          <a href="#biographie" className="font-medium" style={{ color: "var(--text-primary)" }} onClick={() => setMenuOpen(false)}>{t("biographie.tag")}</a>
+          <a href="mailto:benjamin.decret@gmail.com" className="btn-primary w-fit">{t("nav.contact")}</a>
         </div>
       )}
     </header>
@@ -88,6 +95,8 @@ function Navbar() {
 
 // ─── HERO ──────────────────────────────────────────────────────────────────────
 function HeroSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="intro" className="flex flex-col" style={{ background: "var(--beige)" }}>
       {/* Text Content */}
@@ -107,15 +116,13 @@ function HeroSection() {
               className="text-2xl md:text-3xl font-bold mb-8 animate-fade-in-up delay-100"
               style={{ color: "black", fontFamily: "var(--font-tight), sans-serif" }}
             >
-              Compositeur de musique à l&apos;image
+              {t("hero.subtitle")}
             </h2>
             <p
               className="text-base md:text-lg leading-relaxed mb-10 animate-fade-in-up delay-200"
               style={{ color: "black", opacity: 0.8 }}
             >
-              Création d&apos;univers musicaux singuliers pour des projets vidéos.
-              Compositions modernes, orchestrales ou expérimentales pour le jeu vidéo,
-              le cinéma, les courts-métrages et la publicité
+              {t("hero.description")}
             </p>
             <div className="flex flex-wrap gap-4 mb-12 animate-fade-in-up delay-400">
               <a href="#portfolio" className="btn-primary">
@@ -123,10 +130,10 @@ function HeroSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                ÉCOUTER MES COMPOSITIONS
+                {t("hero.ctaListen")}
               </a>
               <a href="#services" className="btn-secondary">
-                Mes services
+                {t("hero.ctaServices")}
               </a>
             </div>
           </div>
@@ -138,15 +145,17 @@ function HeroSection() {
 
 // ─── BIOGRAPHY ────────────────────────────────────────────────────────────────
 function BiographySection() {
+  const { t } = useLanguage();
+
   return (
     <section id="biographie" className="py-24" style={{ background: "var(--violet)" }}>
       <div className="safe-container">
-        <p className="section-tag mb-2">À propos</p>
+        <p className="section-tag mb-2">{t("biography.tag")}</p>
         <h2
           className="text-4xl md:text-5xl font-bold mb-16"
           style={{ color: "var(--deep-purple)" }}
         >
-          Benjamin Decret
+          {t("biography.title")}
         </h2>
 
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
@@ -176,17 +185,17 @@ function BiographySection() {
               className="text-base md:text-lg leading-relaxed mb-8"
               style={{ color: "var(--text-primary)", opacity: 0.9 }}
             >
-              Compositeur, mon identité musicale repose sur une pratique passionnée et diversifiée. Multi-instrumentiste, formé à la musicologie et aux techniques d&apos;orchestration, mon langage sonore se trouve à l&apos;intersection du classique, de l&apos;électronique, du jazz et du Pop Rock.
+              {t("biography.para1")}
             </p>
             <p
               className="text-base md:text-lg leading-relaxed mb-0"
               style={{ color: "var(--text-primary)", opacity: 0.9 }}
             >
-              Ma démarche artistique consiste à m&apos;immerger profondément dans chaque projet pour en saisir l&apos;essence dramatique et émotionnelle. Qu&apos;il s&apos;agisse d&apos;un long-métrage d&apos;animation, d&apos;un jeu vidéo à l&apos;atmosphère épique, ou d&apos;un court-métrage intimiste, j&apos;adapte avec précision ma palette sonore pour créer l&apos;univers musical de chaque projet et servir la narration.
+              {t("biography.para2")}
             </p>
 
-            {/* Small decorative brand image - Enlarged and full opacity - Moved 7px further down (total 148px offset) */}
-            <div className="absolute bottom-[-148px] -right-20 w-48 h-48 pointer-events-none hidden md:block">
+            {/* Small decorative brand image - Enlarged and full opacity - Moved further down to prevent text overlap, especially in English */}
+            <div className="absolute bottom-[-185px] -right-20 w-48 h-48 pointer-events-none hidden md:block">
               <Image
                 src="/ImageBD1.png"
                 alt=""
@@ -203,40 +212,41 @@ function BiographySection() {
 
 // ─── SERVICES ─────────────────────────────────────────────────────────────────
 function ServicesSection() {
+  const { t } = useLanguage();
+
   const services = [
     {
       img: "/collab.png",
-      title: "Collaboration",
-      desc: "Discutons ensemble de vos besoins et vos références pour créer un univers musical cohérent avant la première note.",
+      title: t("services.collabTitle"),
+      desc: t("services.collabDesc"),
     },
     {
       img: "/Compo.png",
-      title: "Production",
-      desc: "De l'écriture mélodique à l'arrangement structurel, je conçois une œuvre originale sur mesure, pensée pour porter votre message ou votre image.",
+      title: t("services.prodTitle"),
+      desc: t("services.prodDesc"),
     },
     {
       img: "/mixage.png",
-      title: "Mixage & Mastering",
-      desc: "Travail sur l'équilibre, l'espace et la dynamique pour transformer la production en un produit fini prêt pour une diffusion professionnelle.",
+      title: t("services.mixTitle"),
+      desc: t("services.mixDesc"),
     },
   ];
 
   return (
     <section id="services" className="py-24" style={{ background: "var(--beige)" }}>
       <div className="safe-container">
-        <p className="section-tag text-center mb-2">Ce que je propose</p>
+        <p className="section-tag text-center mb-2">{t("services.tag")}</p>
         <h2
           className="text-4xl md:text-5xl font-bold text-center mb-4"
           style={{ color: "var(--deep-purple)" }}
         >
-          SERVICES
+          {t("services.title")}
         </h2>
         <p
           className="text-center max-w-2xl mx-auto mb-16 text-base md:text-lg"
           style={{ color: "var(--text-secondary)" }}
         >
-          Découvrez mes services de composition musicale sur mesure pour vos projets artistiques.
-          Création de bandes sonores uniques et originales.
+          {t("services.description")}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
@@ -269,7 +279,7 @@ function ServicesSection() {
 
         <div className="flex justify-center mt-12">
           <a href="mailto:benjamin.decret@gmail.com" className="btn-primary">
-            Discutons de votre projet
+            {t("services.ctaProject")}
           </a>
         </div>
       </div>
@@ -288,6 +298,7 @@ interface VideoCardProps {
 
 function VideoCard({ youtubeId, dailymotionId, title, description, styleInfo }: VideoCardProps) {
   const [dmPlaying, setDmPlaying] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <div className="flex flex-col gap-4">
@@ -360,7 +371,7 @@ function VideoCard({ youtubeId, dailymotionId, title, description, styleInfo }: 
         </p>
         {styleInfo && (
           <p className="text-sm md:text-base mt-2" style={{ color: "var(--text-secondary)" }}>
-            <span className="font-bold">Style :</span> {styleInfo}
+            <span className="font-bold">{t("portfolio.styleLabel")}</span> {styleInfo}
           </p>
         )}
       </div>
@@ -369,55 +380,56 @@ function VideoCard({ youtubeId, dailymotionId, title, description, styleInfo }: 
 }
 
 function PortfolioSection() {
-  // Replace with actual YouTube IDs
+  const { t } = useLanguage();
+
   const musicALImage = [
     {
       id: "EXrNm_RSwJA",
-      title: "The Hobbit - scène d'Erebor",
-      desc: "Ma composition pour cette scène du \"Hobbit, un voyage inattendu\"",
-      style: "orchestral, épique, médiéval/fantasy"
+      title: t("portfolio.videos.hobbitErebor.title"),
+      desc: t("portfolio.videos.hobbitErebor.desc"),
+      style: t("portfolio.videos.hobbitErebor.style")
     },
     {
       id: "NBPVIljJBqg",
-      title: "DUNE - trailer",
-      desc: "Ma proposition musicale pour le film \"Dune\", dans le style de John Williams",
-      style: "musique orchestrale uniquement"
+      title: t("portfolio.videos.dune.title"),
+      desc: t("portfolio.videos.dune.desc"),
+      style: t("portfolio.videos.dune.style")
     },
     {
       id: "rrmwLnb5aqE",
-      title: "Ghost of Tsushima",
-      desc: "Ma proposition musicale pour le trailer du Jeu Vidéo \"Ghost of Tsushima\"",
-      style: "musique orchestrale, japonaise, percussions"
+      title: t("portfolio.videos.ghostOfTsushima.title"),
+      desc: t("portfolio.videos.ghostOfTsushima.desc"),
+      style: t("portfolio.videos.ghostOfTsushima.style")
     },
     {
       dailymotionId: "k6gyPu1YFnJPCtG0DpQ",
-      title: "Légende du crabe phare - court métrage",
-      desc: "Ma proposition de rescore pour ce court métrage",
-      style: "orchestral, hybride, léger, nostalgique"
+      title: t("portfolio.videos.crab.title"),
+      desc: t("portfolio.videos.crab.desc"),
+      style: t("portfolio.videos.crab.style")
     },
     {
       id: "kvVGmnB_IDE",
-      title: "First Man - scène d'atterrissage sur la lune",
-      desc: "Ma proposition musicale pour une scène du film \"First Man\" dans le style Jóhann Jóhannsson",
-      style: "textural, sound design, onirique, DeepSpace"
+      title: t("portfolio.videos.firstMan.title"),
+      desc: t("portfolio.videos.firstMan.desc"),
+      style: t("portfolio.videos.firstMan.style")
     },
     {
       id: "20P3-MGum8w",
-      title: "Hot Wheels Unleashed",
-      desc: "Ma proposition musicale pour le Jeu Vidéo \"Hot Wheels Unleashed\"",
-      style: "musique électronique rétro, rythmée et fun"
+      title: t("portfolio.videos.hotWheels.title"),
+      desc: t("portfolio.videos.hotWheels.desc"),
+      style: t("portfolio.videos.hotWheels.style")
     },
     {
       id: "zUmHYat-E1o",
-      title: "Portela",
-      desc: "Ma proposition musicale pour un trailer présentant des costumes pour le carnaval de Rio",
-      style: "Musique du monde, électronique et acoustique, influences Brésiliennes et d'Afrique de l'Ouest"
+      title: t("portfolio.videos.portela.title"),
+      desc: t("portfolio.videos.portela.desc"),
+      style: t("portfolio.videos.portela.style")
     },
     {
       id: "Rh3MHu5MPp0",
-      title: "Loup Garou - générique",
-      desc: "Ma proposition musicale pour le générique de la série \"Loups Garous\"",
-      style: "Orchestral, électronique, mystérieux"
+      title: t("portfolio.videos.loupGarou.title"),
+      desc: t("portfolio.videos.loupGarou.desc"),
+      style: t("portfolio.videos.loupGarou.style")
     },
   ];
 
@@ -442,25 +454,25 @@ function PortfolioSection() {
       <div className="safe-container">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="section-tag mb-2">Mes créations</p>
+            <p className="section-tag mb-2">{t("portfolio.tag")}</p>
             <h2
               className="text-4xl md:text-5xl font-bold mb-4"
               style={{ color: "var(--deep-purple)" }}
             >
-              Portfolio
+              {t("portfolio.title")}
             </h2>
             <h3
               className="text-2xl font-normal mb-8"
               style={{ color: "var(--deep-purple)" }}
             >
-              Musique à l&apos;image
+              {t("portfolio.subtitle")}
             </h3>
           </div>
           <Link
             href="/portfolio"
             className="self-end btn-primary shrink-0 mb-8"
           >
-            Portfolio complet →
+            {t("portfolio.fullPortfolioBtn")}
           </Link>
         </div>
 
@@ -495,7 +507,7 @@ function PortfolioSection() {
               className="text-2xl font-normal"
               style={{ color: "var(--deep-purple)" }}
             >
-              Musiques Narratives
+              {t("portfolio.narrativeTitle")}
             </h3>
             <a
               href="https://soundcloud.com/benjamin-decret"
@@ -504,7 +516,7 @@ function PortfolioSection() {
               className="text-sm font-bold hover:opacity-70 transition-opacity shrink-0"
               style={{ color: "var(--deep-purple)" }}
             >
-              Lien Soundcloud →
+              {t("portfolio.narrativeLink")}
             </a>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -531,7 +543,7 @@ function PortfolioSection() {
             className="text-2xl font-normal mb-8"
             style={{ color: "var(--deep-purple)" }}
           >
-            Discographie
+            {t("portfolio.discoTitle")}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {spotifyEmbeds.map((sp, i) => (
@@ -553,7 +565,7 @@ function PortfolioSection() {
         {/* CTA — Portfolio complet */}
         <div className="flex justify-center">
           <Link href="/portfolio" className="btn-primary">
-            Voir le portfolio complet →
+            {t("portfolio.seeFullPortfolioBtn")}
           </Link>
         </div>
       </div>
@@ -563,20 +575,22 @@ function PortfolioSection() {
 
 // ─── CONTACT ──────────────────────────────────────────────────────────────────
 function ContactSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="contact" className="pt-24 pb-12" style={{ background: "var(--beige)" }}>
       <div className="safe-container">
-        <p className="section-tag mb-2">Travaillons ensemble</p>
+        <p className="section-tag mb-2">{t("contact.tag")}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="max-w-xl">
             <h2
               className="text-4xl md:text-5xl font-bold mb-6"
               style={{ color: "var(--deep-purple)" }}
             >
-              Contact
+              {t("contact.title")}
             </h2>
             <p className="text-lg mb-6" style={{ color: "var(--text-secondary)" }}>
-              Un projet en tête ? Je serais ravi d&apos;en discuter avec vous.
+              {t("contact.description")}
             </p>
             <a
               href="mailto:benjamin.decret@gmail.com"
@@ -593,7 +607,7 @@ function ContactSection() {
             <div className="relative w-[296px] h-[296px] opacity-90 animate-fade-in" style={{ marginTop: "-20px" }}>
               <Image
                 src="/ImageBD10.png"
-                alt="Illustration décorative contact"
+                alt={t("contact.imgAlt")}
                 fill
                 className="object-contain"
               />
@@ -622,6 +636,8 @@ function ContactSection() {
 
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer
       className="py-10 border-t"
@@ -636,9 +652,9 @@ function Footer() {
         </span>
         <nav className="flex flex-wrap justify-center gap-6">
           {[
-            { label: "Portfolio", href: "#portfolio" },
-            { label: "Services", href: "#services" },
-            { label: "À propos", href: "#biographie" },
+            { label: t("portfolio.title"), href: "#portfolio" },
+            { label: t("nav.services"), href: "#services" },
+            { label: t("biographie.tag"), href: "#biographie" },
           ].map((link) => (
             <a
               key={link.href}
@@ -659,7 +675,7 @@ function Footer() {
         </a>
       </div>
       <div className="text-center mt-6 text-xs" style={{ color: "var(--text-secondary)", opacity: 0.6 }}>
-        © {new Date().getFullYear()} Benjamin Decret — Compositeur de Musique à l&apos;Image
+        {t("footer.copyright").replace("{year}", new Date().getFullYear().toString())}
       </div>
     </footer>
   );
