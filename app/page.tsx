@@ -25,7 +25,7 @@ function Navbar() {
         }`}
     >
       <div className="safe-container flex items-center justify-between py-[9px]">
-        {/* Logo & Mobile Language Switcher */}
+        {/* Logo */}
         <div className="flex items-center gap-3 min-w-0 shrink">
           <a href="#intro" className="flex items-center gap-2 group min-w-0">
             <span
@@ -35,9 +35,6 @@ function Navbar() {
               {t("nav.title")}
             </span>
           </a>
-          <div className="md:hidden shrink-0">
-            <LanguageSwitcher />
-          </div>
         </div>
 
         {/* Desktop Nav */}
@@ -66,7 +63,8 @@ function Navbar() {
         </nav>
 
         {/* Mobile Nav Actions */}
-        <div className="flex md:hidden items-center shrink-0">
+        <div className="flex md:hidden items-center shrink-0 gap-3">
+          <LanguageSwitcher />
           <button
             className="p-2 ml-1 rounded-lg"
             style={{ color: "var(--deep-purple)" }}
@@ -456,7 +454,7 @@ function PortfolioSection() {
   return (
     <section id="portfolio" className="py-24" style={{ background: "var(--violet)" }}>
       <div className="safe-container">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div>
             <p className="section-tag mb-2">{t("portfolio.tag")}</p>
             <h2
@@ -466,15 +464,21 @@ function PortfolioSection() {
               {t("portfolio.title")}
             </h2>
             <h3
-              className="text-2xl font-normal mb-8"
+              className="text-2xl font-normal mb-4 md:mb-8"
               style={{ color: "var(--deep-purple)" }}
             >
               {t("portfolio.subtitle")}
             </h3>
+            <Link
+              href="/portfolio"
+              className="md:hidden btn-primary w-fit mb-8"
+            >
+              {t("portfolio.fullPortfolioBtn")}
+            </Link>
           </div>
           <Link
             href="/portfolio"
-            className="self-end btn-primary shrink-0 mb-8"
+            className="hidden md:inline-flex self-end btn-primary shrink-0 mb-8 w-fit"
           >
             {t("portfolio.fullPortfolioBtn")}
           </Link>

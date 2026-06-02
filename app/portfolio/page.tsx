@@ -244,7 +244,7 @@ export default function PortfolioPage() {
             {/* Inline Navbar */}
             <header className="fixed top-0 left-0 right-0 z-50 bg-[#E0DBFF]/90 backdrop-blur-md border-b" style={{ borderColor: "rgba(61,43,107,0.1)" }}>
                 <div className="safe-container flex items-center justify-between py-[9px]">
-                    {/* Back Link & Mobile Language Switcher */}
+                    {/* Back Link */}
                     <div className="flex items-center gap-3 min-w-0 shrink">
                         <Link
                             href="/"
@@ -253,16 +253,11 @@ export default function PortfolioPage() {
                         >
                             {t("nav.backToHome")}
                         </Link>
-                        <div className="md:hidden shrink-0">
-                            <LanguageSwitcher />
-                        </div>
                     </div>
-                    {/* Desktop Language Switcher & Contact */}
-                    <div className="flex items-center gap-4 shrink-0">
-                        <div className="hidden md:block">
-                            <LanguageSwitcher />
-                        </div>
-                        <a href="mailto:benjamin.decret@gmail.com" className="btn-primary text-sm" style={{ height: 'max-content', padding: '10px 24px', margin: 'auto 0' }}>
+                    {/* Language Switcher & Contact */}
+                    <div className="flex items-center gap-3 md:gap-4 shrink-0">
+                        <LanguageSwitcher />
+                        <a href="mailto:benjamin.decret@gmail.com" className="btn-primary text-sm hidden sm:inline-flex" style={{ height: 'max-content', padding: '10px 24px', margin: 'auto 0' }}>
                             {t("nav.contact")}
                         </a>
                     </div>
