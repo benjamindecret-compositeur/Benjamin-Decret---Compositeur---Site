@@ -454,7 +454,7 @@ function PortfolioSection() {
   return (
     <section id="portfolio" className="py-24" style={{ background: "var(--violet)" }}>
       <div className="safe-container">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
           <div>
             <p className="section-tag mb-2">{t("portfolio.tag")}</p>
             <h2
@@ -464,7 +464,7 @@ function PortfolioSection() {
               {t("portfolio.title")}
             </h2>
             <h3
-              className="text-2xl font-normal mb-8"
+              className="text-2xl font-normal mb-4 md:mb-8"
               style={{ color: "var(--deep-purple)" }}
             >
               {t("portfolio.subtitle")}
@@ -472,7 +472,7 @@ function PortfolioSection() {
           </div>
           <Link
             href="/portfolio"
-            className="self-end btn-primary shrink-0 mb-8"
+            className="self-start md:self-end btn-primary shrink-0 mb-8"
           >
             {t("portfolio.fullPortfolioBtn")}
           </Link>
