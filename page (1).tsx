@@ -20,6 +20,8 @@ interface ScTrack {
   url: string;
   title: string;
   tags: Tag[];
+  descKey?: string;
+  styleKey?: string;
 }
 
 interface VideoItem {
@@ -32,20 +34,21 @@ interface VideoItem {
 
 // ─── CONTENT DATA ──────────────────────────────────────────────────────────────
 // NB: Titles for SC tracks are the same in FR and EN — hardcoded here.
+// Descriptions and styles are translated via t() keys.
 const SC_TRACKS: ScTrack[] = [
-  { url: "https://soundcloud.com/benjamin-decret/laspiration", title: "L'Aspiration", tags: ["contemplatif"] },
-  { url: "https://soundcloud.com/benjamin-decret/whispering-forest", title: "Whispering Trees", tags: ["horreur"] },
-  { url: "https://soundcloud.com/benjamin-decret/ambiant-tides-concept-ambiant", title: "Ambient Tides", tags: ["contemplatif"] },
-  { url: "https://soundcloud.com/benjamin-decret/video-game-cute-fantasy-battle", title: "Cute Fantasy Battle", tags: ["fantasy"] },
-  { url: "https://soundcloud.com/benjamin-decret/video-game-cute-fantasy", title: "Cute Fantasy Adventure", tags: ["fantasy"] },
+  { url: "https://soundcloud.com/benjamin-decret/laspiration", title: "L'Aspiration", tags: ["contemplatif"], descKey: "portfolio.scTracks.laspiration.desc", styleKey: "portfolio.scTracks.laspiration.style" },
+  { url: "https://soundcloud.com/benjamin-decret/whispering-forest", title: "Whispering Trees", tags: ["horreur"], descKey: "portfolio.scTracks.whisperingTrees.desc", styleKey: "portfolio.scTracks.whisperingTrees.style" },
+  { url: "https://soundcloud.com/benjamin-decret/ambiant-tides-concept-ambiant", title: "Ambient Tides", tags: ["contemplatif"], descKey: "portfolio.scTracks.ambientTides.desc", styleKey: "portfolio.scTracks.ambientTides.style" },
+  { url: "https://soundcloud.com/benjamin-decret/video-game-cute-fantasy-battle", title: "Cute Fantasy Battle", tags: ["fantasy"], descKey: "portfolio.scTracks.cuteFriendlyBattle.desc", styleKey: "portfolio.scTracks.cuteFriendlyBattle.style" },
+  { url: "https://soundcloud.com/benjamin-decret/video-game-cute-fantasy", title: "Cute Fantasy Adventure", tags: ["fantasy"], descKey: "portfolio.scTracks.cuteFriendlyAdventure.desc", styleKey: "portfolio.scTracks.cuteFriendlyAdventure.style" },
   // Dark Jazz: multi-tag (horreur + jazz)
-  { url: "https://soundcloud.com/benjamin-decret/ambient-video-game-dark-jazz", title: "Dark Jazz", tags: ["horreur", "jazz"] },
-  { url: "https://soundcloud.com/benjamin-decret/jazzy-cozy-concept", title: "Jazzy Cozy Ambience", tags: ["jazz"] },
-  { url: "https://soundcloud.com/benjamin-decret/jazz-saxo-concept", title: "Jazz Bluesy Ambience", tags: ["jazz"] },
-  { url: "https://soundcloud.com/benjamin-decret/japan-horror-concept", title: "Japan Horror", tags: ["horreur"] },
+  { url: "https://soundcloud.com/benjamin-decret/ambient-video-game-dark-jazz", title: "Dark Jazz", tags: ["horreur", "jazz"], descKey: "portfolio.scTracks.darkNoireAmbiance.desc", styleKey: "portfolio.scTracks.darkNoireAmbiance.style" },
+  { url: "https://soundcloud.com/benjamin-decret/jazzy-cozy-concept", title: "Jazzy Cozy Ambience", tags: ["jazz"], descKey: "portfolio.scTracks.jazzyCozy.desc", styleKey: "portfolio.scTracks.jazzyCozy.style" },
+  { url: "https://soundcloud.com/benjamin-decret/jazz-saxo-concept", title: "Jazz Bluesy Ambience", tags: ["jazz"], descKey: "portfolio.scTracks.jazzyBluesy.desc", styleKey: "portfolio.scTracks.jazzyBluesy.style" },
+  { url: "https://soundcloud.com/benjamin-decret/japan-horror-concept", title: "Japan Horror", tags: ["horreur"], descKey: "portfolio.scTracks.japanHorror.desc", styleKey: "portfolio.scTracks.japanHorror.style" },
   // Horror Chase — lien mis à jour
-  { url: "https://soundcloud.com/benjamin-decret/horror-game-chase-demo", title: "Horror Chase", tags: ["horreur"] },
-  { url: "https://soundcloud.com/benjamin-decret/tv-show-funk-concept", title: "TV Show Funk", tags: ["jazz"] },
+  { url: "https://soundcloud.com/benjamin-decret/horror-game-chase-demo", title: "Horror Chase", tags: ["horreur"], descKey: "portfolio.scTracks.horrorChase.desc", styleKey: "portfolio.scTracks.horrorChase.style" },
+  { url: "https://soundcloud.com/benjamin-decret/tv-show-funk-concept", title: "TV Show Funk", tags: ["jazz"], descKey: "portfolio.scTracks.tvShowFunk.desc", styleKey: "portfolio.scTracks.tvShowFunk.style" },
 ];
 
 const VIDEOS: VideoItem[] = [
@@ -214,7 +217,14 @@ export default function PortfolioPage() {
                 </p>
                 <div className="sc-grid">
                   {filteredTracks.map((track) => (
-                    <ScCard key={track.url} url={track.url} title={track.title} />
+                    <ScCard
+                      key={track.url}
+                      url={track.url}
+                      title={track.title}
+                      description={track.descKey ? t(track.descKey) : undefined}
+                      styleInfo={track.styleKey ? t(track.styleKey) : undefined}
+                      styleLabel={t("portfolio.styleLabel")}
+                    />
                   ))}
                 </div>
               </div>

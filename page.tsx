@@ -181,7 +181,7 @@ function BiographySection() {
             />
           </div>
 
-          {/* Text content */}
+          {/* Text content — paragraphs + parcours + decorative image all in same column */}
           <div className="flex-1 relative">
             <p
               className="text-base md:text-lg leading-relaxed mb-8"
@@ -190,14 +190,34 @@ function BiographySection() {
               {t("biography.para1")}
             </p>
             <p
-              className="text-base md:text-lg leading-relaxed mb-0"
+              className="text-base md:text-lg leading-relaxed mb-8"
               style={{ color: "var(--text-primary)", opacity: 0.9 }}
             >
               {t("biography.para2")}
             </p>
 
-            {/* Small decorative brand image - Enlarged and full opacity - Moved further down to prevent text overlap, especially in English */}
-            <div className="absolute bottom-[-185px] -right-20 w-48 h-48 pointer-events-none hidden md:block">
+            {/* Parcours — même taille de police, à la suite, pleine largeur de la colonne */}
+            <p
+              className="text-base md:text-lg font-bold mb-4"
+              style={{ color: "var(--deep-purple)" }}
+            >
+              {t("biography.parcourTitle")}
+            </p>
+            <ul className="space-y-3 mb-8">
+              {[1,2,3,4,5].map((n) => (
+                <li
+                  key={n}
+                  className="flex gap-2 text-base md:text-lg leading-relaxed"
+                  style={{ color: "var(--text-primary)", opacity: 0.9 }}
+                >
+                  <span style={{ color: "var(--deep-purple)", flexShrink: 0 }}>—</span>
+                  <span>{t(`biography.parcour${n}`)}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Decorative image — en bas à droite du parcours */}
+            <div className="relative w-48 h-48 pointer-events-none hidden md:block ml-auto">
               <Image
                 src="/ImageBD1.png"
                 alt=""
@@ -298,10 +318,30 @@ function PortfolioSection() {
 
   // ── BLOC 1 : À écouter — 4 tracks, 2×2 grid ──────────────────────────────
   const scTracks = [
-    { url: "https://soundcloud.com/benjamin-decret/laspiration", title: "L'Aspiration" },
-    { url: "https://soundcloud.com/benjamin-decret/whispering-forest", title: "Whispering Trees" },
-    { url: "https://soundcloud.com/benjamin-decret/ambiant-tides-concept-ambiant", title: "Ambient Tides" },
-    { url: "https://soundcloud.com/benjamin-decret/video-game-cute-fantasy", title: "Cute Fantasy" },
+    {
+      url: "https://soundcloud.com/benjamin-decret/laspiration",
+      title: "L'Aspiration",
+      descKey: "portfolio.scTracks.laspiration.desc",
+      styleKey: "portfolio.scTracks.laspiration.style",
+    },
+    {
+      url: "https://soundcloud.com/benjamin-decret/whispering-forest",
+      title: "Whispering Trees",
+      descKey: "portfolio.scTracks.whisperingTrees.desc",
+      styleKey: "portfolio.scTracks.whisperingTrees.style",
+    },
+    {
+      url: "https://soundcloud.com/benjamin-decret/ambiant-tides-concept-ambiant",
+      title: "Ambient Tides",
+      descKey: "portfolio.scTracks.ambientTides.desc",
+      styleKey: "portfolio.scTracks.ambientTides.style",
+    },
+    {
+      url: "https://soundcloud.com/benjamin-decret/video-game-cute-fantasy",
+      title: "Cute Fantasy",
+      descKey: "portfolio.scTracks.cuteFriendlyAdventure.desc",
+      styleKey: "portfolio.scTracks.cuteFriendlyAdventure.style",
+    },
   ];
 
   // ── BLOC 2 : À l'image — 4 videos, 2-col grid ────────────────────────────
@@ -387,7 +427,14 @@ function PortfolioSection() {
           {/* 2×2 grid of square SC cards */}
           <div className="sc-grid">
             {scTracks.map((track) => (
-              <ScCard key={track.url} url={track.url} title={track.title} />
+              <ScCard
+                key={track.url}
+                url={track.url}
+                title={track.title}
+                description={t(track.descKey)}
+                styleInfo={t(track.styleKey)}
+                styleLabel={t("portfolio.styleLabel")}
+              />
             ))}
           </div>
           <div className="mt-6 text-right">
@@ -598,15 +645,15 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
-        {/* High Quality Illustration - BD_BG_AG.png */}
+        {/* High Quality Illustration - BD_BG2026.jpg */}
         <div className="w-full" style={{ background: "var(--beige)" }}>
           <div className="w-[85%] mx-auto pb-16">
             <Image
-              src="/BD_BG_AG.png"
+              src="/BD_BG2026.jpg"
               alt="Musical illustration banner high quality"
-              width={1920}
-              height={800}
-              className="object-contain w-auto h-auto mx-auto block"
+              width={1024}
+              height={399}
+              className="w-full h-auto block"
               priority
             />
           </div>

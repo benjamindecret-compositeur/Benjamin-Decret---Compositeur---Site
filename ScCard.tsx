@@ -1,16 +1,19 @@
 "use client";
 
 /**
- * ScCard — simple SoundCloud iframe embed.
+ * ScCard — simple SoundCloud iframe embed with optional subtitle/style metadata.
  * visual=false : lecteur compact avec barre de lecture, pas de fond artwork.
  * Pas de Widget API.
  */
 export interface ScCardProps {
   url: string;
   title: string;
+  description?: string;
+  styleInfo?: string;
+  styleLabel?: string;
 }
 
-export default function ScCard({ url, title }: ScCardProps) {
+export default function ScCard({ url, title, description, styleInfo, styleLabel = "Style :" }: ScCardProps) {
   const src =
     `https://w.soundcloud.com/player/?url=${encodeURIComponent(url)}` +
     `&color=%233d2b6b` +
@@ -41,6 +44,20 @@ export default function ScCard({ url, title }: ScCardProps) {
         title={title}
         style={{ border: "none", display: "block" }}
       />
+      {(description || styleInfo) && (
+        <div className="px-3 py-2" style={{ background: "var(--beige)" }}>
+          {description && (
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem", lineHeight: 1.55, margin: 0 }}>
+              {description}
+            </p>
+          )}
+          {styleInfo && (
+            <p style={{ color: "var(--text-secondary)", fontSize: "0.8rem", marginTop: description ? "0.3rem" : 0, marginBottom: 0 }}>
+              <strong>{styleLabel}</strong> {styleInfo}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
