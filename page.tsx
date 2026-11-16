@@ -150,7 +150,15 @@ function BiographySection() {
   const { t } = useLanguage();
 
   return (
-    <section id="biographie" className="py-24" style={{ background: "var(--violet)" }}>
+    <section id="biographie" className="py-24 relative" style={{ background: "var(--violet)" }}>
+
+      {/* Images décoratives dans les marges — quinconnes */}
+      <img src="/Newcello.png"  alt="" className="margin-deco margin-deco-left"  style={{ top: "60px" }} />
+      <img src="/Newsax.png"    alt="" className="margin-deco margin-deco-right" style={{ top: "240px" }} />
+      <img src="/Newbass.png"   alt="" className="margin-deco margin-deco-left"  style={{ top: "420px" }} />
+      <img src="/Newguitar.png" alt="" className="margin-deco margin-deco-right" style={{ top: "600px" }} />
+      <img src="/Newsynth.png"  alt="" className="margin-deco margin-deco-left"  style={{ top: "780px" }} />
+
       <div className="safe-container">
         <p className="section-tag mb-2">{t("biography.tag")}</p>
         <h2
@@ -161,27 +169,30 @@ function BiographySection() {
         </h2>
 
         <div className="flex flex-col md:flex-row gap-8 lg:gap-12 items-start">
-          {/* Photo */}
-          <div className="relative w-1/3 md:w-1/4 flex-shrink-0">
-            <div
-              className="aspect-[4/5] relative rounded-xl overflow-hidden border-2 border-black"
-              style={{ boxShadow: "0 20px 60px rgba(61,43,107,0.15)" }}
-            >
-              <Image
-                src="/BD_Profil.jpg"
-                alt="Benjamin Decret - Portrait"
-                fill
-                className="object-cover"
+
+          {/* Colonne gauche : photo */}
+          <div className="flex-shrink-0 w-1/3 md:w-1/4" style={{ marginTop: "2rem" }}>
+            <div className="relative">
+              <div
+                className="aspect-[4/5] relative rounded-xl overflow-hidden border-2 border-black"
+                style={{ boxShadow: "0 20px 60px rgba(61,43,107,0.15)" }}
+              >
+                <Image
+                  src="/BD_Profil.jpg"
+                  alt="Benjamin Decret - Portrait"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              {/* Decorative orb */}
+              <div
+                className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full opacity-40 animate-float"
+                style={{ background: "radial-gradient(circle, #C9A84C, transparent)" }}
               />
             </div>
-            {/* Decorative element */}
-            <div
-              className="absolute -bottom-4 -right-4 w-24 h-24 rounded-full opacity-40 animate-float"
-              style={{ background: "radial-gradient(circle, #C9A84C, transparent)" }}
-            />
           </div>
 
-          {/* Text content — paragraphs + parcours + decorative image all in same column */}
+          {/* Colonne droite : texte + parcours + ImageBD1 en bas à droite */}
           <div className="flex-1 relative">
             <p
               className="text-base md:text-lg leading-relaxed mb-8"
@@ -196,7 +207,7 @@ function BiographySection() {
               {t("biography.para2")}
             </p>
 
-            {/* Parcours — même taille de police, à la suite, pleine largeur de la colonne */}
+            {/* Parcours */}
             <p
               className="text-base md:text-lg font-bold mb-4"
               style={{ color: "var(--deep-purple)" }}
@@ -207,7 +218,7 @@ function BiographySection() {
               {[1,2,3,4,5].map((n) => (
                 <li
                   key={n}
-                  className="flex gap-2 text-base md:text-lg leading-relaxed"
+                  className="flex items-start gap-3 text-base md:text-lg leading-relaxed"
                   style={{ color: "var(--text-primary)", opacity: 0.9 }}
                 >
                   <span style={{ color: "var(--deep-purple)", flexShrink: 0 }}>—</span>
@@ -216,14 +227,16 @@ function BiographySection() {
               ))}
             </ul>
 
-            {/* Decorative image — en bas à droite du parcours */}
-            <div className="relative w-48 h-48 pointer-events-none hidden md:block ml-auto">
-              <Image
-                src="/ImageBD1.png"
-                alt=""
-                fill
-                className="object-contain"
-              />
+            {/* ImageBD1 — bas droite, petite, dans le flux naturel */}
+            <div className="hidden md:flex justify-end pointer-events-none">
+              <div className="relative w-32 h-32">
+                <Image
+                  src="/ImageBD1.png"
+                  alt=""
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -647,13 +660,14 @@ export default function Home() {
         <HeroSection />
         {/* High Quality Illustration - BD_BG2026.jpg */}
         <div className="w-full" style={{ background: "var(--beige)" }}>
-          <div className="w-[85%] mx-auto pb-16">
+          <div className="w-[85%] mx-auto pb-16 flex justify-center">
             <Image
               src="/BD_BG2026.jpg"
               alt="Musical illustration banner high quality"
               width={1024}
               height={399}
-              className="w-full h-auto block"
+              className="max-w-full h-auto block"
+              style={{ imageRendering: "auto" }}
               priority
             />
           </div>
